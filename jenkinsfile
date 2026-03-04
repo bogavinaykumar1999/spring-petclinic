@@ -1,9 +1,5 @@
 pipeline {
-<<<<<<< HEAD
     agent {label "java"}
-=======
-    agent {lable "java"}
->>>>>>> 1e6b15161dbb6c3b5f23b549855d49425b673d44
     triggers {
         pollSCM("* * * * *")
     }
