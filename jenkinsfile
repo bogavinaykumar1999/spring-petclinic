@@ -1,5 +1,5 @@
-pipeleine {
-    agent {lable "java"}
+pipeline {
+    agent {label "java"}
     triggers {
         pollSCM("* * * * *")
     }
