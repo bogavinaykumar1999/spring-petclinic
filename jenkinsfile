@@ -1,0 +1,21 @@
+pipeleine {
+    agent {lable "java"}
+    triggers {
+        pollSCM("* * * * *")
+    }
+    stages {
+        stage ("git checkout") {
+            steps {
+                git url: "https://github.com/bogavinaykumar1999/spring-petclinic.git"
+                    branch: "main"
+            }
+            stage ("build and scan") {
+                steps {
+                 sh "mvn package sonar:sonar"
+                }
+            }
+
+        }
+    }
+    
+}
