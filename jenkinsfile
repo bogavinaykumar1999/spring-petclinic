@@ -4,9 +4,9 @@ pipeline {
         pollSCM("* * * * *")
     }
     stages {
-        stage ("git checkout") {
+        stage("git checkout") {
             steps {
-                git url: "https://github.com/bogavinaykumar1999/spring-petclinic.git"
+                git url: "https://github.com/bogavinaykumar1999/spring-petclinic.git",
                     branch: "main"
             }
         stage ("build and scan") {
