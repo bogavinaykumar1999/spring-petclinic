@@ -1,9 +1,5 @@
 pipeline {
-<<<<<<< HEAD
     agent {label "java"}
-=======
-    agent {lable "java"}
->>>>>>> 1e6b15161dbb6c3b5f23b549855d49425b673d44
     triggers {
         pollSCM("* * * * *")
     }
@@ -13,13 +9,20 @@ pipeline {
                 git url: "https://github.com/bogavinaykumar1999/spring-petclinic.git"
                     branch: "main"
             }
+        }
             stage ("build and scan") {
                 steps {
-                 sh "mvn package sonar:sonar"
+                  withCredentials([string(credentialsid:"sonar" ,variable:"SONAR_TOKEN")])
+                  withSonarQubeEnv("SONAR")
+                 sh """mvn package sonar:sonar \\\
+                 -Dsonar.packagekey=bogavinaykumar1999_spring-petclinic \
+                 -Dsonar.oranisation=bogavinaykumar1999 \
+                 -Dsonar.host.url=https://sonarcloud.io/
+                 -Dsonar.login=$SONAR_TOKEN"""
                 }
             }
 
         }
     }
     
-}
+
