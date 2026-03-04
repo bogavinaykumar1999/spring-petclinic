@@ -4,11 +4,12 @@ pipeline {
         pollSCM("* * * * *")
     }
     stages {
-        stage ("git checkout") {
+        stage("git checkout") {
             steps {
-                git url: "https://github.com/bogavinaykumar1999/spring-petclinic.git"
+                git url: "https://github.com/bogavinaykumar1999/spring-petclinic.git",
                     branch: "main"
             }
+<<<<<<< HEAD
         }
             stage ("build and scan") {
                 steps {
@@ -22,7 +23,19 @@ pipeline {
                 }
             }
 
+=======
+>>>>>>> 5604294df656a9b9cee6b2748c7ce0d97e1a0710
         }
+        stage ("build and scan") {
+            steps {
+                 sh "mvn package sonar:sonar"
+            }
+        }
+
     }
+<<<<<<< HEAD
+=======
+}
+>>>>>>> 5604294df656a9b9cee6b2748c7ce0d97e1a0710
     
 
