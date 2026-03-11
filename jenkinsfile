@@ -37,8 +37,10 @@ pipeline {
                         }
                         ]
                     }'''
+               )
+                rtPublishBuildInfo(
+                    serverId: "artifactory-server"
                 )
-                rtPublishBuildInfo(serverId: "JFROG")
             }
 
         }
