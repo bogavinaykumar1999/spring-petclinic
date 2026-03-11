@@ -39,7 +39,7 @@ pipeline {
                     }'''
                )
                 rtPublishBuildInfo(
-                    serverId: "artifactory-server"
+                    serverId: "JFROG"
                 )
             }
 
