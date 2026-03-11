@@ -4,13 +4,13 @@ pipeline {
         pollSCM("* * * * *")
     }
     stages {
-        stage ("git checkout") {
+        stage("git checkout") {
             steps {
                 git url: "https://github.com/bogavinaykumar1999/spring-petclinic.git",
                     branch: "main"
             }
         }
-        stage ("build and scan") {
+        stage("build and scan") {
             steps {
                 withSonarQubeEnv("SONAR") {
                 withCredentials([string(credentialsid:"sonar" ,variable:"SONAR_TOKEN")]) {
