@@ -10,17 +10,17 @@ pipeline {
                     branch: "main"
             }
         }
-        stage('Sonar Analysis') {
-           steps {
-               withSonarQubeEnv('SONAR') {
-               sh '''
-               mvn clean verify sonar:sonar \
-               -Dsonar.projectKey=spring-petclinic \
-               -Dsonar.organization=bogavinaykumar1999 \
-               -Dsonar.host.url=https://sonarcloud.io
-               '''
-               }
-           }
+        stage('Sonar Scan') {
+            steps {
+                withSonarQubeEnv('SONAR') {
+                sh '''
+                mvn clean verify sonar:sonar \
+                -Dsonar.projectKey=spring-petclinic \
+                -Dsonar.organization=bogavinaykumar1999 \
+                -Dsonar.host.url=https://sonarcloud.io \
+                '''
+                }
+            }
         }
         stage("artifactory") {
             steps{
