@@ -10,18 +10,17 @@ pipeline {
                     branch: "main"
             }
         }
-        stage("build and scan") {
-            steps {
-                withSonarQubeEnv("SONAR") {
-                withCredentials([string(credentialsId:"sonar-token",variable:"SONAR_TOKEN")]) {
-                sh """mvn package sonar:sonar \\\
-                -Dsonar.projectkey=bogavinaykumar1999_spring-petclinic \
-                -Dsonar.oranisation=bogavinaykumar1999 \
-                -Dsonar.host.url=https://sonarcloud.io \
-                -Dsonar.login=$SONAR_TOKEN"""
-                }
-                }
-            }
+        stage('Sonar Analysis') {
+           steps {
+               withSonarQubeEnv('SONAR') {
+               sh '''
+               mvn clean verify sonar:sonar \
+               -Dsonar.projectKey=spring-petclinic \
+               -Dsonar.organization=bogavinaykumar1999 \
+               -Dsonar.host.url=https://sonarcloud.io
+               '''
+               }
+           }
         }
         stage("artifactory") {
             steps{
