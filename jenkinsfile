@@ -23,7 +23,7 @@ pipeline {
                 }
             }
         }
-        stage("artifactory") {
+        stage("artifactory"){
             steps{
                 rtupload (
                     serverId: "JFROG",
