@@ -27,7 +27,7 @@ pipeline {
         }
         stage("artifactory") {
             steps{
-                rtupload (
+               rtUpload (
                     serverId: "JFROG",
                     spec: '''{
                         "files": [
